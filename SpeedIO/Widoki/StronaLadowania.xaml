@@ -1,0 +1,63 @@
+﻿<Window x:Class="SpeedIO.Widoki.StronaLadowania"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SpeedIO.Widoki"
+        mc:Ignorable="d"
+        Title="Trwa ładowanie aplikacji..." Height="250" Width="600" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Background="#F7F7F7">
+    <Window.Resources>
+        <!-- Gradient dla tytułu -->
+        <LinearGradientBrush x:Key="TitleGradient" StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#4B82FF" Offset="0.0"/>
+            <GradientStop Color="#2D4370" Offset="1.0"/>
+        </LinearGradientBrush>
+
+        <!-- Gradient dla pasku postępu -->
+        <LinearGradientBrush x:Key="ProgressBarForeground" StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#8184FF" Offset="0.0"/>
+            <GradientStop Color="#313B78" Offset="1.0"/>
+        </LinearGradientBrush>
+
+        <!-- Gradient dla tła pasku postępu -->
+        <LinearGradientBrush x:Key="ProgressBarBackground" StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#BAC2DC" Offset="0.0"/>
+            <GradientStop Color="#A0B8D8" Offset="1.0"/>
+        </LinearGradientBrush>
+    </Window.Resources>
+
+    <Grid Background="#F7F7F7" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Tytuł strony -->
+        <Grid Grid.Row="0" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Label Content="Speed.IO" FontWeight="Bold" FontSize="60" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
+                <Label.Foreground>
+                    <StaticResource ResourceKey="TitleGradient"/>
+                </Label.Foreground>
+                <Label.Effect>
+                    <DropShadowEffect Color="#BAC2DC" Direction="270" ShadowDepth="5" Opacity="0.6"/>
+                </Label.Effect>
+            </Label>
+        </Grid>
+
+        <!-- Pasek postępu -->
+        <ProgressBar Grid.Row="2" Width="400" Height="20" Minimum="0" Maximum="100" x:Name="pasekLadowania">
+            <ProgressBar.Background>
+                <StaticResource ResourceKey="ProgressBarBackground"/>
+            </ProgressBar.Background>
+
+            <ProgressBar.Foreground>
+                <StaticResource ResourceKey="ProgressBarForeground"/>
+            </ProgressBar.Foreground>
+
+            <ProgressBar.BorderBrush>
+                <SolidColorBrush Color="Transparent"/>
+            </ProgressBar.BorderBrush>
+        </ProgressBar>
+    </Grid>
+</Window>

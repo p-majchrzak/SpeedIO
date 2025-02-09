@@ -1,0 +1,99 @@
+﻿<Window x:Class="SpeedIO.Widoki.Regulamin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SpeedIO.Widoki"
+        mc:Ignorable="d"
+        Title="Regulamin" Height="600" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Background="#F7F7F7">
+    <Window.Resources>
+        <!-- Gradient na tytule -->
+        <LinearGradientBrush x:Key="TitleGradient" StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#4B82FF" Offset="0.0"/>
+            <GradientStop Color="#2D4370" Offset="1.0"/>
+        </LinearGradientBrush>
+
+        <!-- Gradient dla przycisków -->
+        <LinearGradientBrush x:Key="StartButtonGradient" StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#4B82FF" Offset="0.0"/>
+            <GradientStop Color="#2D4370" Offset="1.0"/>
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="TermsButtonGradient" StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#9B6FFF" Offset="0.0"/>
+            <GradientStop Color="#512F7D" Offset="1.0"/>
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="SettingsButtonGradient" StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#70C1B3" Offset="0.0"/>
+            <GradientStop Color="#2A5D58" Offset="1.0"/>
+        </LinearGradientBrush>
+
+        <!-- Styl dla przycisków -->
+        <Style x:Key="GradientButtonStyle" TargetType="Button">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Height" Value="60"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="#BAC2DC" Direction="270" ShadowDepth="8" Opacity="0.7"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid Background="#F7F7F7" >
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,40,0,0">
+            <!-- Tytuł strony -->
+            <TextBlock Text="Speed.IO" FontWeight="Bold" FontSize="70" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,-40,0,0">
+                <TextBlock.Foreground>
+                    <StaticResource ResourceKey="TitleGradient"/>
+                </TextBlock.Foreground>
+                <TextBlock.Effect>
+                    <DropShadowEffect Color="#BAC2DC" Direction="270" ShadowDepth="10" Opacity="0.6"/>
+                </TextBlock.Effect>
+            </TextBlock>
+
+            <!-- Tekst o regulaminie -->
+            <TextBlock Text="Regulamin aplikacji" FontWeight="Bold" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0">
+                <TextBlock.Foreground>
+                    <StaticResource ResourceKey="TitleGradient"/>
+                </TextBlock.Foreground>
+                <TextBlock.Effect>
+                    <DropShadowEffect Color="#BAC2DC" Direction="270" ShadowDepth="8" Opacity="0.6"/>
+                </TextBlock.Effect>
+            </TextBlock>
+
+            <!-- Przykładowy regulamin w ScrollViewerze -->
+            <ScrollViewer  VerticalScrollBarVisibility="Auto" HorizontalAlignment="Center" >
+                <ListBox FontSize="18" HorizontalAlignment="Center" Margin="10" Height="200">
+                    <ListBoxItem>1. Aplikacja Speed.IO jest platformą do mierzenia umiejętności szybkiego pisania oraz reakcji wciśnięcia przycisku. Użytkownicy mogą brać udział w wyzwaniach i testach czasowych.</ListBoxItem>
+                    <ListBoxItem>2. Aplikacja nie wymaga zakładania konta. Wszystkie testy są anonimowe, a wyniki są zapisywane tylko na urządzeniu użytkownika.</ListBoxItem>
+                    <ListBoxItem>3. Aplikacja nie przechowuje żadnych danych osobowych użytkowników.</ListBoxItem>
+                    <ListBoxItem>4. Użytkownicy mogą testować swoje umiejętności na różnych poziomach trudności.</ListBoxItem>
+                    <ListBoxItem>5. Aplikacja nie ponosi odpowiedzialności za ewentualne problemy zdrowotne wynikające z intensywnego użytkowania aplikacji.</ListBoxItem>
+                    <ListBoxItem>6. Aplikacja działa na zasadzie rywalizacji czasowej i ma na celu jedynie zabawę i poprawę umiejętności.</ListBoxItem>
+                    <ListBoxItem>7. Użytkownicy akceptują niniejszy regulamin korzystając z aplikacji.</ListBoxItem>
+                    <ListBoxItem>8. Użytkownicy zobowiązują się do korzystania z aplikacji zgodnie z jej przeznaczeniem, tj. do mierzenia swoich umiejętności w pisaniu i reakcji.</ListBoxItem>
+                    <ListBoxItem>9. Aplikacja nie odpowiada za ewentualne przerwy w działaniu spowodowane błędami technicznymi lub problemami z połączeniem internetowym.</ListBoxItem>
+                    <ListBoxItem>10. Zabrania się wykorzystywania aplikacji w celu oszustw, manipulacji wynikami lub innych działań niezgodnych z jej zamierzonym celem.</ListBoxItem>
+                    <ListBoxItem>11. Aplikacja zastrzega sobie prawo do zmiany regulaminu w każdej chwili. Zmieniony regulamin będzie dostępny na stronie aplikacji.</ListBoxItem>
+                    <ListBoxItem>12. Użytkownicy mogą zgłaszać wszelkie nieprawidłowości lub sugestie dotyczące aplikacji za pomocą dostępnych kanałów kontaktowych.</ListBoxItem>
+                    <ListBoxItem>13. Aplikacja nie ponosi odpowiedzialności za jakiekolwiek straty wynikające z nieprawidłowego użytkowania urządzenia przez użytkownika podczas korzystania z aplikacji.</ListBoxItem>
+                    <ListBoxItem>14. Aplikacja może być używana tylko w celach rekreacyjnych i edukacyjnych. Nie jest przeznaczona do wykorzystywania komercyjnego.</ListBoxItem>
+                </ListBox>
+
+            </ScrollViewer>
+
+            <!-- Przycisk powrotu do strony głównej -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,30,0,0">
+                <Button x:Name="Powrot" Click="Powrot_Click" Content="Powrót do Strony Głównej" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource GradientButtonStyle}" Background="{StaticResource StartButtonGradient}" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

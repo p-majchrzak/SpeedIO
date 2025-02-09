@@ -1,0 +1,99 @@
+﻿<Window x:Class="SpeedIO.Widoki.StronaGlowna"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SpeedIO.Widoki"
+        mc:Ignorable="d"
+        Title="StronaGlowna" Height="450" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Background="#F7F7F7">
+    <Window.Resources>
+        <!-- Gradient na tytule -->
+        <LinearGradientBrush x:Key="TitleGradient" StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#4B82FF" Offset="0.0"/>
+            <GradientStop Color="#2D4370" Offset="1.0"/>
+        </LinearGradientBrush>
+
+        <!-- Gradient dla tekstu "Sprawdź się w różnych wyzwaniach czasowych!" -->
+        <LinearGradientBrush x:Key="ChallengeTextGradient" StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#70C1B3" Offset="0.0"/>
+            <GradientStop Color="#2A5D58" Offset="1.0"/>
+        </LinearGradientBrush>
+
+        <!-- Gradient dla przycisków -->
+        <!-- Przycisk "Rozpocznij" - Niebieski -->
+        <LinearGradientBrush x:Key="StartButtonGradient" StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#4B82FF" Offset="0.0"/>
+            <GradientStop Color="#2D4370" Offset="1.0"/>
+        </LinearGradientBrush>
+
+        <!-- Przycisk "Regulamin" - Fioletowy -->
+        <LinearGradientBrush x:Key="TermsButtonGradient" StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#9B6FFF" Offset="0.0"/>
+            <GradientStop Color="#512F7D" Offset="1.0"/>
+        </LinearGradientBrush>
+
+        <!-- Przycisk "Ustawienia" - Zielen -->
+        <LinearGradientBrush x:Key="SettingsButtonGradient" StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#70C1B3" Offset="0.0"/>
+            <GradientStop Color="#2A5D58" Offset="1.0"/>
+        </LinearGradientBrush>
+
+        <!-- Gradient dla pasku postępu -->
+        <LinearGradientBrush x:Key="ProgressBarForeground" StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#8184FF" Offset="0.0"/>
+            <GradientStop Color="#313B78" Offset="1.0"/>
+        </LinearGradientBrush>
+
+        <!-- Styl dla przycisków -->
+        <Style x:Key="GradientButtonStyle" TargetType="Button">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Height" Value="60"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="#BAC2DC" Direction="270" ShadowDepth="8" Opacity="0.7"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid Background="#F7F7F7" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,40,0,0">
+            <!-- Tytuł strony -->
+            <TextBlock Text="Speed.IO" FontWeight="Bold" FontSize="70" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,-40,0,0">
+                <TextBlock.Foreground>
+                    <StaticResource ResourceKey="TitleGradient"/>
+                </TextBlock.Foreground>
+                <TextBlock.Effect>
+                    <DropShadowEffect Color="#BAC2DC" Direction="270" ShadowDepth="10" Opacity="0.6"/>
+                </TextBlock.Effect>
+            </TextBlock>
+
+            <!-- Nowy tekst z gradientem zielono-niebieskim -->
+            <TextBlock Text="Sprawdź się!" FontWeight="Bold" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,20">
+                <TextBlock.Foreground>
+                    <StaticResource ResourceKey="ChallengeTextGradient"/>
+                </TextBlock.Foreground>
+                <TextBlock.Effect>
+                    <DropShadowEffect Color="#BAC2DC" Direction="270" ShadowDepth="10" Opacity="0.6"/>
+                </TextBlock.Effect>
+            </TextBlock>
+
+            <!-- Przycisk "Rozpocznij" obok innych przycisków -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                <Button Content="Rozpocznij" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource GradientButtonStyle}" Background="{StaticResource StartButtonGradient}" />
+
+                <!-- Przycisk "Regulamin" -->
+                <Button x:Name="RegulaminStr" Click="Regulamin_Click" Content="Regulamin" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource GradientButtonStyle}" Background="{StaticResource TermsButtonGradient}" />
+
+                <!-- Przycisk "Ustawienia" -->
+                <Button Content="Ustawienia" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource GradientButtonStyle}" Background="{StaticResource SettingsButtonGradient}" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
