@@ -1,0 +1,98 @@
+﻿<Window x:Class="SpeedIO.Widoki.WyborOpcji"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SpeedIO.Widoki"
+        mc:Ignorable="d"
+        Title="Menu Główne" Height="450" Width="800" Background="#F7F7F7">
+
+    <Window.Resources>
+        <!-- Gradient dla tytułu -->
+        <LinearGradientBrush x:Key="TitleGradient" StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#4B82FF" Offset="0.0"/>
+            <GradientStop Color="#2D4370" Offset="1.0"/>
+        </LinearGradientBrush>
+
+        <!-- Gradient dla przycisków -->
+        <LinearGradientBrush x:Key="GameButtonGradient" StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#4B82FF" Offset="0.0"/>
+            <GradientStop Color="#2D4370" Offset="1.0"/>
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="StatsButtonGradient" StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#9B6FFF" Offset="0.0"/>
+            <GradientStop Color="#512F7D" Offset="1.0"/>
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="BackButtonGradient" StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#FF4B82" Offset="0.0"/>
+            <GradientStop Color="#D02D43" Offset="1.0"/>
+        </LinearGradientBrush>
+
+        <!-- Styl dla przycisków -->
+        <Style x:Key="GradientButtonStyle" TargetType="Button">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Margin" Value="0,10,0,10"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="#BAC2DC" Direction="270" ShadowDepth="8" Opacity="0.7"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Styl dla tytułu -->
+        <Style x:Key="TitleTextStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="32"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0,0,0,20"/>
+            <Setter Property="Foreground">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#4B82FF" Offset="0.0"/>
+                        <GradientStop Color="#2D4370" Offset="1.0"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="#BAC2DC" Direction="270" ShadowDepth="10" Opacity="0.6"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid Background="#F7F7F7" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <!-- Tytuł strony -->
+            <TextBlock Name="TitleTextBlock" Text="Wybierz grę" Style="{StaticResource TitleTextStyle}"/>
+
+            <!-- Przycisk do gry 1 -->
+            <Button Name="Game1Button" Content="Gra: Czas Reakcji" Width="250" Height="50"
+                    Style="{StaticResource GradientButtonStyle}" Background="{StaticResource GameButtonGradient}" Click="Game1Button_Click"/>
+
+            <!-- Przycisk do gry 2 -->
+            <Button Name="Game2Button" Content="Gra: Zapamiętywanie" Width="250" Height="50"
+                    Style="{StaticResource GradientButtonStyle}" Background="{StaticResource GameButtonGradient}" Click="Game2Button_Click"/>
+
+            <!-- Przycisk do gry 3 -->
+            <Button Name="Game3Button" Content="Gra: Test Szybkości" Width="250" Height="50"
+                    Style="{StaticResource GradientButtonStyle}" Background="{StaticResource GameButtonGradient}" Click="Game3Button_Click"/>
+
+            <!-- Przycisk do statystyk -->
+            <Button Name="StatsButton" Content="Twoje statystyki" Width="250" Height="50"
+                    Style="{StaticResource GradientButtonStyle}" Background="{StaticResource StatsButtonGradient}" Click="StatsButton_Click"/>
+
+            <!-- Przycisk powrotu -->
+            <Button Name="BackButton" Content="Wyloguj" Width="250" Height="50"
+                    Style="{StaticResource GradientButtonStyle}" Background="{StaticResource BackButtonGradient}" Click="BackButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

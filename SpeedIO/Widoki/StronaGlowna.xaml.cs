@@ -17,5 +17,12 @@ namespace SpeedIO.Widoki
             Regulamin regulamin = new Regulamin();
             regulamin.ShowDialog();
         }
+
+        private void Rozpocznij_Click(object sender, RoutedEventArgs e)
+        {
+            StronaLogowania stronaLogowania = new StronaLogowania();
+            stronaLogowania.Show();
+            Close();
+        }
     }
 }

@@ -86,7 +86,7 @@
 
             <!-- Przycisk "Rozpocznij" obok innych przycisków -->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
-                <Button Content="Rozpocznij" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource GradientButtonStyle}" Background="{StaticResource StartButtonGradient}" />
+                <Button x:Name="Rozpocznij" Click="Rozpocznij_Click" Content="Rozpocznij" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource GradientButtonStyle}" Background="{StaticResource StartButtonGradient}" />
 
                 <!-- Przycisk "Regulamin" -->
                 <Button x:Name="RegulaminStr" Click="Regulamin_Click" Content="Regulamin" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource GradientButtonStyle}" Background="{StaticResource TermsButtonGradient}" />
