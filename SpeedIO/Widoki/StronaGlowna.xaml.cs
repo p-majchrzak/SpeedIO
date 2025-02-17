@@ -11,17 +11,15 @@ namespace SpeedIO.Widoki
         {
             InitializeComponent();
         }
-
         private void Regulamin_Click(object sender, RoutedEventArgs e)
         {
             Regulamin regulamin = new Regulamin();
             regulamin.ShowDialog();
         }
-
         private void Rozpocznij_Click(object sender, RoutedEventArgs e)
         {
-            StronaLogowania stronaLogowania = new StronaLogowania();
-            stronaLogowania.Show();
+            WyborOpcji wyborOpcji = new WyborOpcji();
+            wyborOpcji.Show();
             Close();
         }
     }

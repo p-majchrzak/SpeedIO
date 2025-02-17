@@ -5,32 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SpeedIO.Widoki"
         mc:Ignorable="d"
-        Title="CzasReakcji" Height="450" Width="800" Background="#F7F7F7" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
-
+        Title="Czas Reakcji" Height="450" Width="800" Background="#F7F7F7" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Window.Resources>
-        <!-- Gradient dla tytułu strony -->
         <LinearGradientBrush x:Key="TitleGradient" StartPoint="0,0" EndPoint="1,1">
             <GradientStop Color="#4B82FF" Offset="0.0"/>
             <GradientStop Color="#2D4370" Offset="1.0"/>
         </LinearGradientBrush>
-
-        <!-- Gradient dla przycisków -->
         <LinearGradientBrush x:Key="StartButtonGradient" StartPoint="0,0" EndPoint="1,1">
             <GradientStop Color="#4B82FF" Offset="0.0"/>
             <GradientStop Color="#2D4370" Offset="1.0"/>
         </LinearGradientBrush>
-
         <LinearGradientBrush x:Key="StopButtonGradient" StartPoint="0,0" EndPoint="1,1">
             <GradientStop Color="#FF4B82" Offset="0.0"/>
             <GradientStop Color="#D02D43" Offset="1.0"/>
         </LinearGradientBrush>
-
         <LinearGradientBrush x:Key="ResultsButtonGradient" StartPoint="0,0" EndPoint="1,1">
             <GradientStop Color="#9B6FFF" Offset="0.0"/>
             <GradientStop Color="#512F7D" Offset="1.0"/>
         </LinearGradientBrush>
-
-        <!-- Styl dla przycisków -->
         <Style x:Key="GradientButtonStyle" TargetType="Button">
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontSize" Value="20"/>
@@ -46,8 +38,6 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
-        <!-- Styl dla InstructionTextBlock -->
         <Style x:Key="InstructionTextStyle" TargetType="TextBlock">
             <Setter Property="FontSize" Value="18"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
@@ -67,8 +57,6 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
-        <!-- Styl dla TextBox -->
         <Style x:Key="PlayerNameTextBoxStyle" TargetType="TextBox">
             <Setter Property="Width" Value="200"/>
             <Setter Property="Height" Value="30"/>
@@ -92,8 +80,6 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
-        <!-- Styl dla ResultTextBlock -->
         <Style x:Key="ResultTextStyle" TargetType="TextBlock">
             <Setter Property="FontSize" Value="24"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
@@ -112,11 +98,24 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="InputTextBoxStyle" TargetType="TextBox">
+            <Setter Property="Width" Value="250"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Margin" Value="0,5,0,10"/>
+            <Setter Property="Foreground" Value="#313B78"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#A0B8D8"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="#BAC2DC" Direction="270" ShadowDepth="5" Opacity="0.4"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
-
     <Grid Background="#F7F7F7" VerticalAlignment="Center" HorizontalAlignment="Center">
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <!-- Tytuł strony -->
             <TextBlock HorizontalAlignment="Center" Name="TitleTextBlock" Text="Gra na Czas Reakcji" FontSize="32" FontWeight="Bold" Margin="0,0,0,20">
                 <TextBlock.Foreground>
                     <StaticResource ResourceKey="TitleGradient"/>
@@ -125,23 +124,11 @@
                     <DropShadowEffect Color="#BAC2DC" Direction="270" ShadowDepth="10" Opacity="0.6"/>
                 </TextBlock.Effect>
             </TextBlock>
-
-            <!-- Instrukcja -->
             <TextBlock Name="InstructionTextBlock" Text="Wpisz swoje imię i kliknij 'Rozpocznij Grę'." Style="{StaticResource InstructionTextStyle}"/>
-
-            <!-- TextBox do wpisania imienia -->
-            <TextBox Name="PlayerNameTextBox" Style="{StaticResource PlayerNameTextBoxStyle}" />
-
-            <!-- Przycisk 'Rozpocznij Grę' -->
+            <TextBox Name="PlayerNameTextBox" Style="{StaticResource InputTextBoxStyle}" />
             <Button Name="StartButton" Content="Rozpocznij Grę" Width="150" Height="40" Margin="0,10,0,10" Style="{StaticResource GradientButtonStyle}" Background="{StaticResource StartButtonGradient}" Click="StartButton_Click"/>
-
-            <!-- Przycisk 'Zatrzymaj Grę' -->
             <Button Name="StopButton" Content="Zatrzymaj Grę" Width="150" Height="40" Margin="0,10,0,10" Style="{StaticResource GradientButtonStyle}" Background="{StaticResource StopButtonGradient}" IsEnabled="False" Click="StopButton_Click"/>
-
-            <!-- Przycisk 'Wyniki' -->
-            <Button Name="PokazWyniki" Content="Wyniki" Width="150" Height="40" Margin="0,10,0,10" Style="{StaticResource GradientButtonStyle}" Background="{StaticResource ResultsButtonGradient}" Click="PokazWyniki_Click"/>
-
-            <!-- Wynik gry -->
+            <Button x:Name="Powrot" Content="Powrót" Width="150" Height="40" Margin="0,10,0,10" Style="{StaticResource GradientButtonStyle}" Background="{StaticResource ResultsButtonGradient}" Click="Powrot_Click"/>
             <TextBlock Name="ResultTextBlock" Style="{StaticResource ResultTextStyle}"/>
         </StackPanel>
     </Grid>

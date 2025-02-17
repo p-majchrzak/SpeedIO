@@ -23,37 +23,33 @@ namespace SpeedIO.Widoki
         {
             InitializeComponent();
         }
-
         private void Game1Button_Click(object sender, RoutedEventArgs e)
         {
             CzasReakcji czasReakcji = new CzasReakcji();
             czasReakcji.Show();
             Close();
         }
-
         private void Game2Button_Click(object sender, RoutedEventArgs e)
         {
             Zapamietywanie zapamietywanie = new Zapamietywanie();
             zapamietywanie.Show();
             Close();
         }
-
         private void Game3Button_Click(object sender, RoutedEventArgs e)
         {
             TestSzybkosci testSzybkosci = new TestSzybkosci();
             testSzybkosci.Show();
             Close();
         }
-
         private void StatsButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Wyniki wyniki = new Wyniki();
+            wyniki.ShowDialog();
         }
-
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            StronaLogowania stronaLogowania = new StronaLogowania();
-            stronaLogowania.Show();
+            StronaGlowna stronaGlowna = new StronaGlowna();
+            stronaGlowna.Show();
             Close();
         }
     }

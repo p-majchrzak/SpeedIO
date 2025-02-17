@@ -6,21 +6,15 @@
         xmlns:local="clr-namespace:SpeedIO.Widoki"
         mc:Ignorable="d"
         Title="Wyniki" Height="450" Width="800" Background="#F7F7F7" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
-
     <Window.Resources>
-        <!-- Gradient dla tytułu strony -->
         <LinearGradientBrush x:Key="TitleGradient" StartPoint="0,0" EndPoint="1,1">
             <GradientStop Color="#4B82FF" Offset="0.0"/>
             <GradientStop Color="#2D4370" Offset="1.0"/>
         </LinearGradientBrush>
-
-        <!-- Gradient dla przycisków -->
         <LinearGradientBrush x:Key="BackButtonGradient" StartPoint="0,0" EndPoint="1,1">
             <GradientStop Color="#4B82FF" Offset="0.0"/>
             <GradientStop Color="#2D4370" Offset="1.0"/>
         </LinearGradientBrush>
-
-        <!-- Styl dla przycisków -->
         <Style x:Key="GradientButtonStyle" TargetType="Button">
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontSize" Value="20"/>
@@ -36,8 +30,6 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
-        <!-- Styl dla WynikiListBox -->
         <Style x:Key="WynikiListBoxStyle" TargetType="ListBox">
             <Setter Property="Width" Value="480"/>
             <Setter Property="Height" Value="250"/>
@@ -52,8 +44,6 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
-        <!-- Styl dla TitleTextBlock -->
         <Style x:Key="TitleTextStyle" TargetType="TextBlock">
             <Setter Property="FontSize" Value="32"/>
             <Setter Property="FontWeight" Value="Bold"/>
@@ -74,16 +64,10 @@
             </Setter>
         </Style>
     </Window.Resources>
-
     <Grid Background="#F7F7F7" VerticalAlignment="Center" HorizontalAlignment="Center">
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <!-- Tytuł strony -->
-            <TextBlock Name="TitleTextBlock" Text="Wyniki" Style="{StaticResource TitleTextStyle}"/>
-
-            <!-- Lista wyników -->
+            <TextBlock Name="TitleTextBlock" Text="Wyniki czasu reakcji" Style="{StaticResource TitleTextStyle}"/>
             <ListBox x:Name="WynikiListBox" Style="{StaticResource WynikiListBoxStyle}"/>
-
-            <!-- Przycisk 'Powrót' -->
             <Button Name="BackButton" Content="Powrót" Width="150" Height="40" Margin="0,20,0,10" Style="{StaticResource GradientButtonStyle}" Background="{StaticResource BackButtonGradient}" Click="BackButton_Click"/>
         </StackPanel>
     </Grid>

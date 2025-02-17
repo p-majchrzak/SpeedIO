@@ -20,10 +20,10 @@ namespace SpeedIO.Widoki
     /// </summary>
     public partial class Zapamietywanie : Window
     {
-        private string currentSequence = ""; // Przechowywana sekwencja do zapamiętania
+        private string currentSequence = ""; 
         private Random random = new Random();
         private DispatcherTimer timer;
-        private int displayTime = 3; // Czas wyświetlania sekwencji w sekundach
+        private int displayTime = 3; 
 
         public Zapamietywanie()
         {
@@ -37,7 +37,6 @@ namespace SpeedIO.Widoki
             UserInputTextBox.Clear();
             ResultTextBlock.Text = "";
 
-            // Uruchamiamy timer do ukrycia sekwencji
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(displayTime);
             timer.Tick += Timer_Tick;
@@ -46,7 +45,6 @@ namespace SpeedIO.Widoki
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            // Ukrywamy sekwencję po upływie czasu
             SequenceTextBlock.Text = "*****";
             timer.Stop();
         }
@@ -69,12 +67,12 @@ namespace SpeedIO.Widoki
 
         private void GenerateRandomSequence()
         {
-            int length = 6; // Długość sekwencji do zapamiętania
+            int length = 6; 
             StringBuilder sb = new StringBuilder();
 
             for (int i = 0; i < length; i++)
             {
-                sb.Append((char)random.Next(65, 91)); // Losowa litera A-Z
+                sb.Append((char)random.Next(65, 91));
             }
 
             currentSequence = sb.ToString();
@@ -84,7 +82,7 @@ namespace SpeedIO.Widoki
         {
             WyborOpcji wyborOpcji = new WyborOpcji();
             wyborOpcji.Show();
-            this.Close(); // Zamykamy okno i wracamy do poprzedniego widoku
+            this.Close(); 
         }
     }
 }

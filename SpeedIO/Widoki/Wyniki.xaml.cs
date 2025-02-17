@@ -27,27 +27,20 @@ namespace SpeedIO.Widoki
         {
             InitializeComponent();
 
-            // Ścieżka do bazy danych SQLite
             string sciezkaBazy = System.IO.Path.Combine("wynikiGry.db");
 
-            // Inicjalizowanie połączenia z bazą
             polaczenieZBaza = new SQLiteConnection(sciezkaBazy);
 
-            // Tworzenie tabeli, jeśli nie istnieje
             polaczenieZBaza.CreateTable<WynikGry>();
 
-            // Pobierz wyniki z bazy danych
             var wyniki = PobierzWyniki();
 
-            // Dodaj wyniki do ListBox
             foreach (var wynik in wyniki)
             {
                 string wynikTekst = $"{wynik.ImieGracza}: {wynik.CzasReakcji} ({wynik.Milisekundy} ms)";
                 WynikiListBox.Items.Add(wynikTekst);
             }
         }
-
-        // Funkcja pobierająca wyniki z bazy danych, posortowane rosnąco
         private List<WynikGry> PobierzWyniki()
         {
             return polaczenieZBaza.Table<WynikGry>().OrderBy(w => w.Milisekundy).ToList();

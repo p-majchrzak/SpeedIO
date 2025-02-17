@@ -10,9 +10,9 @@ namespace SpeedIO.Widoki
 
     public partial class CzasReakcji : Window
     {
-        private SerialPort serialPort;  // Obiekt portu szeregowego
-        private bool isGameRunning = false;  // Flaga informująca, czy gra jest aktywna
-        private string playerName;  // Imię gracza
+        private SerialPort serialPort;  
+        private bool isGameRunning = false; 
+        private string playerName; 
         private SQLiteConnection polaczenieZBaza;
         public CzasReakcji()
         {
@@ -20,38 +20,29 @@ namespace SpeedIO.Widoki
 
             string sciezkaBazy = Path.Combine("wynikiGry.db");
 
-            // Inicjalizowanie połączenia z bazą
             polaczenieZBaza = new SQLiteConnection(sciezkaBazy);
 
-            // Tworzenie tabeli, jeśli nie istnieje
             polaczenieZBaza.CreateTable<WynikGry>();
 
-            serialPort = new SerialPort("COM5", 9600);  // Wybierz odpowiedni port szeregowy
-            serialPort.DataReceived += SerialPort_DataReceived;  // Dodanie obsługi zdarzenia odbierania danych
+            serialPort = new SerialPort("COM5", 9600); 
+            serialPort.DataReceived += SerialPort_DataReceived;  
         }
-
-        // Obsługuje kliknięcie przycisku "Rozpocznij Grę"
-
         private void ZapiszWynik(string czasReakcji, int milisekundy)
         {
-            // Tworzymy nowy obiekt reprezentujący wynik gry
             var wynikGry = new WynikGry
             {
-                ImieGracza = PlayerNameTextBox.Text,  // Imię gracza
-                CzasReakcji = czasReakcji,  // Czas reakcji w formie tekstowej
-                Milisekundy = milisekundy  // Czas reakcji w milisekundach
+                ImieGracza = PlayerNameTextBox.Text, 
+                CzasReakcji = czasReakcji, 
+                Milisekundy = milisekundy 
             };
 
-            // Wstawienie rekordu do bazy danych
             polaczenieZBaza.Insert(wynikGry);
 
-            // Możesz dodać jakąś informację do UI, że zapisano wynik (jeśli chcesz)
-            MessageBox.Show("Wynik został zapisany do bazy danych.", "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show("Uzyskano wynik!", "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
         }
-
         private void StartButton_Click(object sender, RoutedEventArgs e)
         {
-            playerName = PlayerNameTextBox.Text.Trim();  // Pobieramy imię gracza z pola tekstowego
+            playerName = PlayerNameTextBox.Text.Trim();  
             if (string.IsNullOrEmpty(playerName))
             {
                 MessageBox.Show("Proszę wpisać swoje imię.", "Błąd wejściowy", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -60,51 +51,58 @@ namespace SpeedIO.Widoki
 
             if (!serialPort.IsOpen)
             {
-                serialPort.Open();  // Otwórz port szeregowy
-                ResultTextBlock.Text = "Oczekiwanie na wynik gry...";
-                StartButton.IsEnabled = false;  // Zablokuj przycisk "Rozpocznij Grę"
-                StopButton.IsEnabled = true;  // Włącz przycisk "Zatrzymaj Grę"
-                isGameRunning = true;  // Ustaw flagę na true, by gra była aktywna
-                serialPort.WriteLine("START");  // Wyślij komendę "START" do Arduino
+                try
+                {
+                    serialPort.Open();
+                    ResultTextBlock.Text = "Oczekiwanie na wynik gry...";
+                    StartButton.IsEnabled = false;
+                    StopButton.IsEnabled = true;
+                    isGameRunning = true;
+                    serialPort.WriteLine("START");
+                }
+                catch (UnauthorizedAccessException)
+                {
+                    MessageBox.Show("Nie udało się otworzyć portu szeregowego. Sprawdź, czy urządzenie jest podłączone.", "Błąd połączenia", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                catch (IOException)
+                {
+                    MessageBox.Show("Błąd w komunikacji z portem szeregowym. Sprawdź, czy urządzenie jest prawidłowo podłączone.", "Błąd połączenia", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
-
-        // Obsługuje kliknięcie przycisku "Zatrzymaj Grę"
         private void StopButton_Click(object sender, RoutedEventArgs e)
         {
             if (isGameRunning)
             {
-                serialPort.WriteLine("STOP");  // Wysyłamy komendę do zatrzymania gry na Arduino
-                StopButton.IsEnabled = false;  // Zablokuj przycisk "Zatrzymaj Grę"
-                ResultTextBlock.Text = "Gra zatrzymana.";  // Wyświetl komunikat
-                StartButton.IsEnabled = true;  // Włącz przycisk "Rozpocznij Grę"
-                isGameRunning = false;  // Zatrzymaj grę
+                serialPort.WriteLine("STOP");  
+                StopButton.IsEnabled = false; 
+                ResultTextBlock.Text = "Gra zatrzymana."; 
+                StartButton.IsEnabled = true;  
+                isGameRunning = false; 
             }
         }
-
-        // Obsługuje odbieranie danych z portu szeregowego (z Arduino)
         private void SerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            string wiadomosc = serialPort.ReadLine();  // Odczytujemy linię danych z portu szeregowego
+            string wiadomosc = serialPort.ReadLine(); 
             Dispatcher.Invoke(() =>
             {
                 if (int.TryParse(wiadomosc.Trim(), out int czasReakcji))
                 {
-                    ResultTextBlock.Text = $"Czas reakcji: {czasReakcji} ms";  // Wyświetlamy czas reakcji
-                    ZapiszWynik(czasReakcji.ToString() + " ms", czasReakcji);  // Zapisujemy wynik w bazie danych
+                    ResultTextBlock.Text = $"Czas reakcji: {czasReakcji} ms"; 
+                    ZapiszWynik(czasReakcji.ToString() + " ms", czasReakcji); 
                 }
                 else if (wiadomosc.Contains("Za wczesnie"))
                 {
-                    ResultTextBlock.Text = "Za wcześnie! Spróbuj ponownie.";  // Wyświetlamy komunikat o błędzie
-                    ZapiszWynik("Za wcześnie", 0);  // Zapisujemy wynik "Za wcześnie"
+                    ResultTextBlock.Text = "Za wcześnie! Spróbuj ponownie."; 
+                    ZapiszWynik("Za wcześnie", 0);  
                 }
             });
         }
-
-        private void PokazWyniki_Click(object sender, RoutedEventArgs e)
+        private void Powrot_Click(object sender, RoutedEventArgs e)
         {
-            Wyniki wyniki = new Wyniki();
-            wyniki.ShowDialog();
+            WyborOpcji wyborOpcji = new WyborOpcji();
+            wyborOpcji.Show();
+            Close();
         }
     }
 }

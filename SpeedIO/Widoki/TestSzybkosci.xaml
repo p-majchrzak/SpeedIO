@@ -5,32 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SpeedIO.Widoki"
         mc:Ignorable="d"
-        Title="Test Szybkości" Height="450" Width="800" Background="#F7F7F7">
-
+        Title="Test Szybkości" Height="450" Width="800" Background="#F7F7F7" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Window.Resources>
-        <!-- Gradient dla tytułu -->
         <LinearGradientBrush x:Key="TitleGradient" StartPoint="0,0" EndPoint="1,1">
             <GradientStop Color="#4B82FF" Offset="0.0"/>
             <GradientStop Color="#2D4370" Offset="1.0"/>
         </LinearGradientBrush>
-
-        <!-- Gradient dla przycisków -->
         <LinearGradientBrush x:Key="StartButtonGradient" StartPoint="0,0" EndPoint="1,1">
             <GradientStop Color="#4B82FF" Offset="0.0"/>
             <GradientStop Color="#2D4370" Offset="1.0"/>
         </LinearGradientBrush>
-
         <LinearGradientBrush x:Key="CheckButtonGradient" StartPoint="0,0" EndPoint="1,1">
             <GradientStop Color="#9B6FFF" Offset="0.0"/>
             <GradientStop Color="#512F7D" Offset="1.0"/>
         </LinearGradientBrush>
-
         <LinearGradientBrush x:Key="BackButtonGradient" StartPoint="0,0" EndPoint="1,1">
             <GradientStop Color="#FF4B82" Offset="0.0"/>
             <GradientStop Color="#D02D43" Offset="1.0"/>
         </LinearGradientBrush>
-
-        <!-- Styl dla przycisków -->
         <Style x:Key="GradientButtonStyle" TargetType="Button">
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontSize" Value="20"/>
@@ -46,8 +38,6 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
-        <!-- Styl dla tytułu -->
         <Style x:Key="TitleTextStyle" TargetType="TextBlock">
             <Setter Property="FontSize" Value="32"/>
             <Setter Property="FontWeight" Value="Bold"/>
@@ -67,38 +57,54 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="InputTextBoxStyle" TargetType="TextBox">
+            <Setter Property="Width" Value="250"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Margin" Value="0,5,0,10"/>
+            <Setter Property="Foreground" Value="#313B78"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#A0B8D8"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="#BAC2DC" Direction="270" ShadowDepth="5" Opacity="0.4"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="InstructionTextStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Margin" Value="0,0,0,10"/>
+            <Setter Property="Foreground">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#4B82FF" Offset="0.0"/>
+                        <GradientStop Color="#2D4370" Offset="1.0"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="#BAC2DC" Direction="270" ShadowDepth="5" Opacity="0.6"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
-
     <Grid Background="#F7F7F7" VerticalAlignment="Center" HorizontalAlignment="Center">
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <!-- Tytuł strony -->
             <TextBlock Name="TitleTextBlock" Text="Test Szybkości" Style="{StaticResource TitleTextStyle}"/>
-
-            <!-- Instrukcja -->
-            <TextBlock Name="InstructionTextBlock" Text="Kliknij 'Start' i jak najszybciej wpisz wyświetlone słowo."
-                       FontSize="18" HorizontalAlignment="Center" Margin="0,0,0,10"/>
-
-            <!-- Pole do wyświetlania słowa -->
+            <TextBlock Name="InstructionTextBlock" Text="Kliknij 'Start' i jak najszybciej wpisz wyświetlone słowo, po czym wciśnij Enter!"
+                       FontSize="18" HorizontalAlignment="Center" Style="{StaticResource InstructionTextStyle}"/>
             <TextBlock Name="WordTextBlock" FontSize="30" FontWeight="Bold" Foreground="#2D4370"
-                       HorizontalAlignment="Center" Margin="0,10,0,10"/>
-
-            <!-- Pole do wpisania odpowiedzi -->
+                       HorizontalAlignment="Center" />
             <TextBox Name="UserInputTextBox" Width="250" Height="40" HorizontalAlignment="Center"
-                     FontSize="18" Margin="0,10,0,10"/>
-
-            <!-- Przycisk startu -->
+                     FontSize="18" Style="{StaticResource InputTextBoxStyle}" KeyDown="UserInputTextBox_KeyDown"/>
             <Button Name="StartButton" Content="Start" Width="200" Height="50"
                     Style="{StaticResource GradientButtonStyle}" Background="{StaticResource StartButtonGradient}" Click="StartButton_Click"/>
-
-            <!-- Przycisk sprawdzenia odpowiedzi -->
-            <Button Name="CheckButton" Content="Sprawdź" Width="200" Height="50"
-                    Style="{StaticResource GradientButtonStyle}" Background="{StaticResource CheckButtonGradient}" Click="CheckButton_Click"/>
-
-            <!-- Wynik -->
             <TextBlock Name="ResultTextBlock" FontSize="20" FontWeight="Bold" Foreground="#2D4370"
-                       HorizontalAlignment="Center" Margin="0,20,0,0"/>
-
-            <!-- Przycisk powrotu -->
+                       HorizontalAlignment="Center"/>
             <Button Name="BackButton" Content="Powrót" Width="200" Height="50"
                     Style="{StaticResource GradientButtonStyle}" Background="{StaticResource BackButtonGradient}" Click="BackButton_Click"/>
         </StackPanel>

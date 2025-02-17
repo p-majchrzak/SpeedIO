@@ -7,13 +7,10 @@
         mc:Ignorable="d"
         Title="Regulamin" Height="600" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Background="#F7F7F7">
     <Window.Resources>
-        <!-- Gradient na tytule -->
         <LinearGradientBrush x:Key="TitleGradient" StartPoint="0,0" EndPoint="1,1">
             <GradientStop Color="#4B82FF" Offset="0.0"/>
             <GradientStop Color="#2D4370" Offset="1.0"/>
         </LinearGradientBrush>
-
-        <!-- Gradient dla przycisków -->
         <LinearGradientBrush x:Key="StartButtonGradient" StartPoint="0,0" EndPoint="1,1">
             <GradientStop Color="#4B82FF" Offset="0.0"/>
             <GradientStop Color="#2D4370" Offset="1.0"/>
@@ -23,13 +20,10 @@
             <GradientStop Color="#9B6FFF" Offset="0.0"/>
             <GradientStop Color="#512F7D" Offset="1.0"/>
         </LinearGradientBrush>
-
         <LinearGradientBrush x:Key="SettingsButtonGradient" StartPoint="0,0" EndPoint="1,1">
             <GradientStop Color="#70C1B3" Offset="0.0"/>
             <GradientStop Color="#2A5D58" Offset="1.0"/>
         </LinearGradientBrush>
-
-        <!-- Styl dla przycisków -->
         <Style x:Key="GradientButtonStyle" TargetType="Button">
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontSize" Value="20"/>
@@ -49,7 +43,6 @@
 
     <Grid Background="#F7F7F7" >
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,40,0,0">
-            <!-- Tytuł strony -->
             <TextBlock Text="Speed.IO" FontWeight="Bold" FontSize="70" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,-40,0,0">
                 <TextBlock.Foreground>
                     <StaticResource ResourceKey="TitleGradient"/>
@@ -58,8 +51,6 @@
                     <DropShadowEffect Color="#BAC2DC" Direction="270" ShadowDepth="10" Opacity="0.6"/>
                 </TextBlock.Effect>
             </TextBlock>
-
-            <!-- Tekst o regulaminie -->
             <TextBlock Text="Regulamin aplikacji" FontWeight="Bold" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0">
                 <TextBlock.Foreground>
                     <StaticResource ResourceKey="TitleGradient"/>
@@ -68,8 +59,6 @@
                     <DropShadowEffect Color="#BAC2DC" Direction="270" ShadowDepth="8" Opacity="0.6"/>
                 </TextBlock.Effect>
             </TextBlock>
-
-            <!-- Przykładowy regulamin w ScrollViewerze -->
             <ScrollViewer  VerticalScrollBarVisibility="Auto" HorizontalAlignment="Center" >
                 <ListBox FontSize="18" HorizontalAlignment="Center" Margin="10" Height="200">
                     <ListBoxItem>1. Aplikacja Speed.IO jest platformą do mierzenia umiejętności szybkiego pisania oraz reakcji wciśnięcia przycisku. Użytkownicy mogą brać udział w wyzwaniach i testach czasowych.</ListBoxItem>
@@ -89,8 +78,6 @@
                 </ListBox>
 
             </ScrollViewer>
-
-            <!-- Przycisk powrotu do strony głównej -->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,30,0,0">
                 <Button x:Name="Powrot" Click="Powrot_Click" Content="Powrót do Strony Głównej" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource GradientButtonStyle}" Background="{StaticResource StartButtonGradient}" />
             </StackPanel>

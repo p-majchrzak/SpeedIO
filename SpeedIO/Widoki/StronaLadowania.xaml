@@ -7,33 +7,25 @@
         mc:Ignorable="d"
         Title="Trwa ładowanie aplikacji..." Height="250" Width="600" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Background="#F7F7F7">
     <Window.Resources>
-        <!-- Gradient dla tytułu -->
         <LinearGradientBrush x:Key="TitleGradient" StartPoint="0,0" EndPoint="1,1">
             <GradientStop Color="#4B82FF" Offset="0.0"/>
             <GradientStop Color="#2D4370" Offset="1.0"/>
         </LinearGradientBrush>
-
-        <!-- Gradient dla pasku postępu -->
         <LinearGradientBrush x:Key="ProgressBarForeground" StartPoint="0,0" EndPoint="1,1">
             <GradientStop Color="#8184FF" Offset="0.0"/>
             <GradientStop Color="#313B78" Offset="1.0"/>
         </LinearGradientBrush>
-
-        <!-- Gradient dla tła pasku postępu -->
         <LinearGradientBrush x:Key="ProgressBarBackground" StartPoint="0,0" EndPoint="1,1">
             <GradientStop Color="#BAC2DC" Offset="0.0"/>
             <GradientStop Color="#A0B8D8" Offset="1.0"/>
         </LinearGradientBrush>
     </Window.Resources>
-
     <Grid Background="#F7F7F7" VerticalAlignment="Center" HorizontalAlignment="Center">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-
-        <!-- Tytuł strony -->
         <Grid Grid.Row="0" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Label Content="Speed.IO" FontWeight="Bold" FontSize="60" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
                 <Label.Foreground>
@@ -44,8 +36,6 @@
                 </Label.Effect>
             </Label>
         </Grid>
-
-        <!-- Pasek postępu -->
         <ProgressBar Grid.Row="2" Width="400" Height="20" Minimum="0" Maximum="100" x:Name="pasekLadowania">
             <ProgressBar.Background>
                 <StaticResource ResourceKey="ProgressBarBackground"/>
@@ -54,7 +44,6 @@
             <ProgressBar.Foreground>
                 <StaticResource ResourceKey="ProgressBarForeground"/>
             </ProgressBar.Foreground>
-
             <ProgressBar.BorderBrush>
                 <SolidColorBrush Color="Transparent"/>
             </ProgressBar.BorderBrush>
